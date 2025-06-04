@@ -2,13 +2,17 @@
 
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "./ui/button";
 
 export const ButtonSignOut = () => {
+  const [pending, setPending] = useState<boolean>(false);
   const router = useRouter();
 
   const signOut = () => {
+    setPending(true);
+
     authClient.signOut({
       fetchOptions: {
         onSuccess: () => {
@@ -19,7 +23,13 @@ export const ButtonSignOut = () => {
         },
       },
     });
+
+    setPending(false);
   };
 
-  return <Button onClick={signOut}>Logout</Button>;
+  return (
+    <Button onClick={signOut} disabled={pending}>
+      Logout
+    </Button>
+  );
 };

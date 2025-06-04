@@ -118,7 +118,11 @@ export const AuthForm = <T extends FieldValues>({
                 />
               ))}
 
-              <Button type='submit' className='form-btn'>
+              <Button
+                type='submit'
+                className='form-btn'
+                disabled={form.formState.isSubmitting}
+              >
                 {isSignIn ? "Sign In" : "Sign Up"}
               </Button>
             </form>

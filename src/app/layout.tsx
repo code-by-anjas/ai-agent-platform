@@ -1,6 +1,6 @@
-import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
 import { DM_Mono, Poppins } from "next/font/google";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -29,7 +29,7 @@ export default function RootLayout({
     <html lang='en'>
       <body className={`${poppins.variable} ${dm_mono.variable} antialiased`}>
         {children}
-        <Toaster />
+        <Toaster richColors position='top-center' />
       </body>
     </html>
   );
